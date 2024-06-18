@@ -1,0 +1,47 @@
+{%include 'staff_header.html'%}
+<section id="hero" style="height: 500px;">
+    
+    <div class="hero-container" data-aos="fade-up" data-aos-delay="150">
+    </div>
+    
+</section>
+     <form method="post">
+        <table align="center">
+        <h1 align="center" style="color: rgb(255, 0, 0); font-family: Papyrus, fantasy;">SEND COMPLAINTS</h1>
+         <tr>
+            <td><textarea name="complaint_details" height class="form-control" required></textarea></td> 
+         </tr>
+         <tr>
+            <td align=""center colspan="2"><br>
+                <input class="btn btn-success" type="submit" name="submit"value="send"></td>
+         </tr>
+         
+         </table>
+         <br>
+    </form>     -->
+    <center>
+        <form method="post"></form>
+        <h3 align="center" style="color: rgb(255, 0, 0); font-family: Papyrus, fantasy;">VIEW REPLY</h3>
+    <table align ="center" class="table table-stripped">
+    
+        <tr>
+                <th style="color: black;">COMPLAINT DETAILS</th>
+                <th style="color: black;">REPLAY</th>
+                <th style="color: black;">DATE</th>
+        </tr>
+
+        {%for i in data['staffsendcomplaint']%}
+        <tr>
+            <td>{{i['complaint_details']}}</td> 
+            <td>{{i['reply']}}</td> 
+            <td>{{i['date']}}</td> 
+        </tr>
+        {%endfor%}
+    </table>
+    </form>
+{%include 'footer.html'%}
+   
+   
+
+            
+        

@@ -1,0 +1,87 @@
+{% include 'maintenance_header.html' %}
+
+<!-- banner -->
+<section class="banner_main">
+    <div class="container-fluid">
+       <div class="row d_flex">
+          <div class="col-md-7">
+             <div class="text-bg">
+                <div class="padding_lert">
+
+        <form method="post">
+
+        </div>
+    </div>
+    </div>
+    <div class="col-md-5 bah">
+    <div class="bann_img">
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    <!-- end banner -->
+<center>
+    <form method="post">
+    <table align ="center"class="table table-stripped">
+        <h1 style="color: blue;">BRANCH VIEW COMPLAINTS</h1>
+
+        <tr>
+            <th style="color: black;">SLNO </th>
+            <th style="color: black;">COMPLAINT</th>
+            <th style="color: black;">REPLY</th>
+            <th style="color: black;">DATE</th>
+            <th style="color: black;">REPLY STATUS</th>
+
+        </tr>
+        {% for i in data['sendcomplaint'] %}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{i['complaint']}}</td>
+            <td>{{i['reply']}}</td>
+            <td>{{i['date']}}</td>
+
+
+            {% if i['reply']=='pending' %}
+           <td><p><a href="maintenancesendreply?cid={{i['complaint_id']}}"><input class="btn btn-success" type="submit" name="submit"value="maintenance send reply branch"></a></p></td> 
+           {% endif %}
+
+        </tr>
+        {%endfor%}
+        </table>
+    </form>
+</center>
+
+       {%include 'footer.html'%}
+       <style>
+        body {
+  background-color:white;
+}
+
+form {
+  display:block;
+  width:550px;
+  height:auto;
+  margin:60px auto;
+  border-radius:15px;
+  background-color:white;
+  font-size:16px;
+  font-family:'Arial';
+  color:black
+}
+</style>
+<style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #D6EEEE;
+    }
+    </style>  

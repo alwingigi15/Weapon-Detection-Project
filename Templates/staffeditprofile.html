@@ -1,0 +1,106 @@
+{%include 'staff_header.html'%}
+<section id="hero" style="height: 500px;">
+    
+    <div class="hero-container" data-aos="fade-up" data-aos-delay="150">
+      <h1 align="center" style="color: skyblue;">Update Staff</h1>
+
+    </div>
+  </section><!-- End Hero -->
+  <h1 align="center" style="color: rgb(255, 0, 0); font-family: Papyrus, fantasy;">UPDATE STAFF</h1>
+
+    {% if data['upd'] %}
+  <!-- <h1 align="center" style="color: skyblue;">UPDATE STAFF</h1> -->
+
+    <form method="post">
+        <table align ="center"border="1"  style="background-color: white" class="table table-stripped">
+          <tr>
+        <th>first_name </th>
+        <td><input type="text"name="first_name" value="{{data['upd'][0]['first_name']}}"></td>
+        </tr>
+        <tr>
+        <th>last_name </th>
+        <td><input type="text"name="last_name" value="{{data['upd'][0]['last_name']}}"></td>
+        </tr>
+        <tr>
+        <th>dob</th>
+        <td><input type="date"name="dob" value="{{data['upd'][0]['dob']}}"></td>
+        </tr>
+        <tr>
+        <th>phone_number</th>
+        <td><input type="number"name="phone_number"value="{{data['upd'][0]['phone_number']}}"></td>
+        </tr>
+        <tr>
+        <th>email</th>
+        <td><input type="email" name="email"value="{{data['upd'][0]['email']}}"></td>
+        </tr>
+        <tr>
+        <td align="center"colspan="2"><input type="submit"name="update"value="update"></td>
+        </tr>        
+        </table>
+        </form>
+
+    {%endif%}
+  
+      
+<form method="post">
+<table align ="center" class="table table-stripped">
+
+    <tr>
+        <th style="color: black;">SLNO</th>
+        <th style="color: black;">FIRST_NAME</th>
+        <th style="color: black;">LAST_NAME</th>
+        <th style="color: black;">BIRTH_DATE</th>
+        <th style="color: black;">PHONE_NUMBER</th>
+        <th style="color: black;">EMAIL</th>
+
+    </tr>
+    {% for i in data['staff'] %}
+    <tr>
+        <td>{{loop.index}}</td>
+        <td>{{i['first_name']}}</td>
+        <td>{{i['last_name']}}</td>
+        <td>{{i['dob']}}</td>
+        <td>{{i['phone_number']}}</td>
+        <td>{{i['email']}}</td>
+
+        <td><a href="?action=update&did={{i['staff_id']}}" class="btn btn-primary" >Update</a></td>
+
+    </tr>
+    {%endfor%}
+</table>
+</form>
+
+
+       {%include 'footer.html'%}
+       <style>
+        body {
+  background-color:white;
+}
+
+form {
+  display:block;
+  width:750px;
+  height:auto;
+  margin:50px auto;
+  border-radius:15px;
+  background-color:white;
+  font-size:16px;
+  font-family: Papyrus, fantasy;
+  color:black
+}
+</style>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #D6EEEE;
+  }
+  </style>    

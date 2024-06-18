@@ -1,0 +1,54 @@
+{%include 'staff_header.html'%}
+<section id="hero" >
+    
+    <div class="hero-container" data-aos="fade-up" data-aos-delay="150">
+    </div>
+  </section><!-- End Hero -->
+    <form method="post" >
+        <table align="center">
+        <h1 align="center" style="color: rgb(255, 0, 0);font-family: Papyrus, fantasy;">SEND COMPLAINTS</h1>
+         <tr>
+                <td><textarea name="complaint" class="form-control" required></textarea></td>
+         </tr>
+<br>
+         <tr>
+                <td align=""center colspan="2"><br>
+                    <input class="btn btn-success" type="submit" name="submit"value="Send"></td>
+         </tr>
+
+         <br>
+         </table>
+         <br>
+         </form>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+</section>
+         
+       
+    <center>
+    
+            <form method="post"></form>
+            <h2 align="center" style="color:rgb(255, 0, 0);font-family: Papyrus, fantasy;">VIEW REPLY</h2>
+        <table align ="center" class="table table-stripped">
+            
+            <tr>
+                    <th style="color: black;">COMPLAINT</th>
+                    <th style="color: black;">REPLAY</th>
+                    <th style="color: black;">DATE</th>
+            </tr>
+
+            {%for i in data['complaint']%}
+            <tr>
+                <td>{{i['complaint']}}</td> 
+                <td>{{i['reply']}}</td> 
+                <td>{{i['date']}}</td> 
+           </tr>
+            {%endfor%}
+        </table>
+   
+
+       {%include 'footer.html'%}
+      

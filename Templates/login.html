@@ -1,0 +1,76 @@
+{%include 'public_header.html'%}
+<section id="hero">
+    
+    <div class="hero-container" data-aos="fade-up" data-aos-delay="150">
+        <form action="/login" method="POST">
+            <lable id="title">LOGIN</lable>
+            <table>
+              <boby>
+                <tr>
+                  <td >USERNAME:</td>
+                  <td><input type="text" name="user_name" id="user_name" class="form-control"></td>
+                </tr>
+                <tr>
+                  <td >PASSWORD:</td>
+                  <td><input type="password" name="password" id="password" class="form-control">
+                  </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" name="submit"  value="submit" class="btn btn-info">
+                    </td>
+                  </tr>
+                  
+              </body>
+            </table>
+        </form>
+    </div>
+</section><!-- End Hero --> 
+<main id="main">
+
+  {%include 'footer.html'%}
+   <style>
+    body {
+  background-color:rgba(255, 255, 255, 0.944);
+}
+
+form {
+  display:BLACK;
+  width:450px;
+  height:auto;
+  margin:50px auto;
+  padding:10px;
+  border-radius:15px;
+  background-color:rgba(255, 255, 255, 0.966);
+  font-size:16px;
+  font-family: Papyrus, fantasy;
+  color:black
+}
+
+table {
+  margin:0 auto;
+}
+
+table td {
+  vertical-align: top;
+}
+
+table td.lbl {
+  padding-top:12px;
+}
+
+#title {
+  display:block;
+  margin:0;
+  padding: 20px;
+  text-align:center;
+  font-size:20px;
+  color:rgb(246, 0, 0);
+}
+   </style>
+   <style>
+    .btn {
+      background-color: rgb(57, 177, 77);
+      color: rgb(240, 255, 247);
+    }
+   </style>

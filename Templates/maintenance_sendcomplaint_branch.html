@@ -1,0 +1,66 @@
+{%include 'branch_header.html'%}
+<section id="hero">
+    <div class="hero-container" data-aos="fade-up" data-aos-delay="150">
+
+</div>
+</section><!-- End Hero -->
+    <form method="post" >
+        <table align="center">
+        <h1 align="center" style="color: rgb(255, 0, 0);font-family: Papyrus, fantasy;">SEND COMPLAINTS</h1>
+         <tr>
+                <td><textarea name="complaint" class="form-control" required></textarea></td>
+         </tr>
+<br>
+         <tr>
+                <td align=""center colspan="2"><br>
+                    <input class="btn btn-primary" type="submit" name="submit"value="Send"></td>
+         </tr>
+
+         <br>
+         </table>
+         <br>
+         </form>
+       
+    <center>
+    
+            <form method="post"></form>
+            <h3 align="center" style="color:rgb(255, 0, 0);font-family: Papyrus, fantasy;">VIEW REPLY</h3>
+        <table align ="center" class="table table-stripped">
+            
+            <tr>
+                    <th style="color: black;">COMPLAINT</th>
+                    <th style="color: black;">REPLAY</th>
+                    <th style="color: black;">DATE</th>
+            </tr>
+
+            {%for i in data['sendcomplaint']%}
+            <tr>
+                <td>{{i['complaint']}}</td> 
+                <td>{{i['reply']}}</td> 
+                <td>{{i['date']}}</td> 
+           </tr>
+            {%endfor%}
+        </table>
+
+        {%include 'footer.html'%}
+        <style>
+         body {
+   background-color:white;
+ }
+ 
+ form {
+   display:block;
+   width:950px;
+   height:auto;
+   margin:80px auto;
+   border-radius:15px;
+   background-color:white;
+   font-size:16px;
+   font-family:'Arial';
+   color:black
+ }
+ </style>
+    
+        
+
+      

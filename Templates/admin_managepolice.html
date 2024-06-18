@@ -1,0 +1,235 @@
+{% include 'adminheader.html' %}
+
+
+   <!-- banner -->
+	      <section class="banner_main">
+	         <div class="container-fluid">
+	            <div class="row d_flex">
+	               <div class="col-md-7">
+	                  <div class="text-bg">
+	                     <div class="padding_lert">
+							<h1 align="center" style="color: rgb(255, 0, 0);"> POLICE</h1>
+							
+							
+<form method="post">
+
+	{% if data['upd']%}
+	<form method="post">
+		<table align ="center" class="table table-stripped">
+		<h2 align="center" style="color: blue;">UPDATE POLICE</h2>
+	<tr>
+		<td class="lbl">FIRST NAME</td>
+		<td><input type="text" name="first_name"value="{{data['upd'][0]['first_name']}}"></td>
+	</tr>
+	<tr>
+		<td class="lbl">LAST NAME</td>
+		<td><input type="text" name="last_name"value="{{data['upd'][0]['last_name']}}"></td>
+	</tr>
+	<tr>
+		<td class="lbl">PHONE NUMBER</td>
+		<td><input type="text" name="phone_number"value="{{data['upd'][0]['phone_number']}}"></td>
+	</tr>
+
+	<tr>
+		<td class="lbl">EMAIL</td>
+		<td><input type="text" name="email"value="{{data['upd'][0]['email']}}"></td>
+	</tr>
+	<tr>
+		<td class="lbl">PLACE</td>
+		<td><input type="text" name="place"value="{{data['upd'][0]['place']}}"></td>
+	</tr>
+
+	<tr>
+		<td colspan="2" align="center"><input type="submit" class="btn btn-success" name="update" value="submit"></td>
+	</tr>
+</table>
+</form>
+{% else %}
+<form method="post">
+    <table align ="center" class="table table-stripped">
+		<h2 align="center" style="color: rgb(255, 0, 0);">ADD POLICE</h2>
+	<tr>
+		<td class="lbl">FIRST NAME</td>
+		<td><input type="text" name="first_name" id="first_name" class="textbox" required></td>
+	</tr>
+	<tr>
+		<td class="lbl">LAST NAME</td>
+		<td><input type="text" name="last_name" id="last_name" class="textbox" required></td>
+	</tr>
+	<tr>
+		<td class="lbl">PHONE NUMBER</td>
+		<td><input type="text" name="phone_number" required id="phone_number" maxlength="10" class="textbox" required></td>
+	</tr>
+
+	<tr>
+		<td class="lbl">EMAIL</td>
+		<td><input type="email" name="email" id="email" class="textbox" required></td>
+	</tr>
+	<tr>
+		<td class="lbl">PLACE</td>
+		<td><input type="text" name="place" id="place" class="textbox"  required></td>
+	</tr>
+
+	<tr>
+							<td class="lbl">USERNAME</td>
+							<td><input type="text" name="user_name" id="user_name" class="textbox" required></td>
+						</tr>
+						<tr>
+							<td class="lbl">PASSWORD</td>
+							<td><input type="text" name="password" id="password" class="textbox" required></td>
+						</tr>
+
+	
+	<tr>
+		<td colspan="2" align="center"><input type="submit" class="btn btn-success" name="submit" value="submit"></td>
+	</tr>
+</table>
+</form>
+      {%endif%}
+<center>	  
+		<div id="dvMap" style="width: 600; height: 500;"></div>
+	  
+	                     </div>
+	                  </div>
+	               </div>
+	               <div class="col-md-5 bah">
+	                  <div class="bann_img">
+	                     <!-- <figure><img src="/static/images/bann_img.png" alt="#"/></figure> -->
+	                  </div>
+	               </div>
+	            </div>
+	         </div>
+	      </section>
+	      <!-- end banner -->
+<h1 align="center" style="color: rgb(255, 0, 0);">MANAGE POLICE</h1>
+<table align ="center" class="table table-stripped">
+	<tr>
+		<th style="color: black;">SLNO</th>
+		<th style="color: black;">FIRST NAME</th>
+		<th style="color: black;">LAST NAME</th>
+		<th style="color: black;">PHONE NUMBER</th>
+        <th style="color: black;">EMAIL</th>
+        <th style="color: black;">PLACE</th>
+
+
+	</tr>
+	{% for i in data['police'] %}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{ i['first_name'] }}</td>
+			<td>{{ i['last_name'] }}</td>
+			<td>{{ i['phone_number'] }}</td>
+			<td>{{ i['email'] }}</td>
+			<td>{{ i['place'] }}</td>
+			
+			<td><a class="btn btn-primary" href="?action=update&pid={{i['police_id']}}">Update</a></td>
+			<td><a  class="btn btn-primary"  href="?action=delete&pid={{i['police_id']}}">Delete</a></td>
+		</tr>
+
+	{% endfor %}
+</table>
+
+
+<style>
+	body {
+background-color:white;
+}
+
+form {
+
+display:block;
+width:550px;
+height:auto;
+margin:60px auto;
+border-radius:15px;
+background-color:rgba(255, 255, 255, 0.958);
+font-size:16px;
+color:rgb(0, 0, 0)
+}
+</style>
+
+<script src="
+https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+<script>
+    $(function() {
+        $("input[name='first_name']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+        $("input[name='last_name']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+		$("input[name='hname']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+		$("input[name='street']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+		$("input[name='city']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+		$("input[name='state']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+        // $("input[name='dob']").on('input', function(e) {
+        //     $(this).val($(this).val().replace(/[^0-9/]/g, ''));
+
+        // });
+        
+        $("input[name='phone_number']").on('input', function(e) {
+        	$(this).val($(this).val().replace(/[^0-9]/g, ''));
+            
+        });
+        $("input[name='pin']").on('input', function(e) {
+        	$(this).val($(this).val().replace(/[^0-9]/g, ''));
+            
+        });
+        $("input[name='email']").on('input', function(e) {
+              var re = /([A-Z0-9a-z_-][^@])+?@[^$#<>?]+?\.[\w]{1,}/.test(this.value);
+                if(!re) {
+                    $('#eerror').show();
+                } else {
+                    $('#eerror').hide();
+                }
+
+        });
+        $("input[name='address']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z0-9()/. ]/g, ''));
+
+        });
+        $("input[name='place']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+            
+        $("input[name='pwd']").on('input', function(e) {
+        	$(this).val($(this).val().replace(/[^0-9A-Za-z@/. ]/g, ''));
+            
+        });
+    });
+
+
+
+   var check = function() {
+  if (document.getElementById('password').value ==
+    document.getElementById('confirm_password').value) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'matching';
+  } else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'not matching';
+  }
+}
+</script>
+
+
+	
+
+
+{% include 'footer.html' %}

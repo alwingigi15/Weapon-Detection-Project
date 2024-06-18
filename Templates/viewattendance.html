@@ -1,0 +1,58 @@
+{%include 'branch_header.html'%}
+<section id="hero">
+    <div class="hero-container" data-aos="fade-up" data-aos-delay="150">
+
+</div>
+</section><!-- End Hero -->
+<form method="post">
+    <h1 align="center" style="color: rgb(255, 0, 0);font-family: Papyrus, fantasy;">VIEW ATTENDANCE</h1>
+     
+    <center>
+        
+        <table align ="center" class="table table-stripped">
+            <tr>
+            <tr>
+                <th style="color: black;">SLNO </th>
+                <th style="color: black;">DATE</th>
+                <th style="color: black;">STATUS</th>
+            </tr>
+            {% for i in data['attendance'] %}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{i['date']}}</td>
+                <td>{{i['status']}}</td>
+            </tr>
+            {%endfor%}
+        </table>
+        </form>
+    </center>
+
+
+       {%include 'footer.html'%}
+       <style>
+        body {
+          font-family: Papyrus, fantasy;
+          margin: 0;
+          padding: 0;
+        }
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        th, td {
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #D6EEEE;
+        }
+        </style>    
+   
+
+            
+        
+     
+
+

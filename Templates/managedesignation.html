@@ -1,0 +1,95 @@
+{%include 'adminheader.html'%}
+<!-- banner -->
+<section class="banner_main">
+  <div class="container-fluid">
+     <div class="row d_flex">
+        <div class="col-md-7">
+           <div class="text-bg">
+              <div class="padding_lert">
+                <h1 align="center" style="color: rgb(244, 0, 0);"> DESIGNATION</h1>
+     
+    {% if data['upd'] %}
+    <form method="post">
+      <h2 align="center" style="color: blue;">UPDATE DESIGNATION</h2>
+<table align ="center" class="table table-stripped"
+        <tr>
+        <th>designation_name </th>
+        <td><input type="text"name="designation_name" value="{{data['upd'][0]['designation_name']}}"></td>
+        </tr>
+        <tr>
+        <td align="center"colspan="2"><input class="btn btn-success" type="submit"name="update"value="Update">
+        </tr>
+        </tr>
+        
+        </table>
+        </form>
+
+{% else %}
+    <form method="post">
+      <h2 align="center" style="color: rgb(255, 0, 13);">ADD DESIGNATION</h2>
+<table align ="center" class="table table-stripped">
+        <tr>
+        <th>DESIGNATION NAME </th>
+       <td><input type="text" name="designation_name"></td>
+       </tr>
+       <tr>
+        <td align="center" colspan="2"><input class="btn btn-success" type="submit" name="submit"value="submit"></td>
+      </tr>
+      
+        </table>
+        </form>
+       
+        {%endif%}
+<center>
+
+</div>
+</div>
+</div>
+<div class="col-md-5 bah">
+<div class="bann_img">
+   <!-- <figure><img src="/static/images/bann_img.png" alt="#"/></figure> -->
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- end banner -->
+
+<h1 align="center" style="color: rgb(255, 0, 0);">MANAGE DESIGNATION</h1>
+<table align ="center" class="table table-stripped"
+            <tr>
+                <th style="color: black;">SLNO </th>
+                <th style="color: black;">DESIGNATION</th>
+            </tr>
+            {% for i in data['desig'] %}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{i['designation_name']}}</td>
+                <td><a href="?action=delete&did={{i['designation_id']}}" class="btn btn-primary">Delete</a></td>
+                <td><a href="?action=update&did={{i['designation_id']}}" class="btn btn-primary">Update</a></td>
+
+            </tr>
+            {%endfor%}
+        </table>
+    </center>
+
+       {%include 'footer.html'%}
+       <style>
+        body {
+  background-color:white;
+  
+}
+
+form {
+  display:block;
+  width:550px;
+  height:auto;
+  margin:60px auto;
+  border-radius:15px;
+  background-color:white;
+  font-size:16px;
+  font-family: Papyrus, fantasy;
+  color:black
+}
+</style>
+   

@@ -1,0 +1,131 @@
+{% include 'adminheader.html' %}
+<!-- banner -->
+<section class="banner_main">
+  <div class="container-fluid">
+     <div class="row d_flex">
+        <div class="col-md-7">
+           <div class="text-bg">
+              <div class="padding_lert">
+               <h1 align="center" style="color: rgb(255, 0, 0);">MAINTENANCE</h1>
+
+             {% if data['upd'] %}
+             <form method="post">
+                     
+               <table align ="center" class="table table-stripped">
+                  <h2 align="center" style="color: blue;">UPDATE MAINTENANCE</h2>
+                <tr>
+                <th>company_name </th>
+                <td><input type="text"name="company_name" value="{{data['upd'][0]['company_name']}}"></td>
+                </tr>
+                <tr>
+                <th>phone_number </th>
+                <td><input type="number"name="phone_number" value="{{data['upd'][0]['phone_number']}}"></td>
+                </tr>
+                <tr>
+                <th>email </th>
+                <td><input type="email"name="email" value="{{data['upd'][0]['email']}}"></td>
+                </tr>
+                <tr>
+                <td align="center" colspan="2"><input class="btn btn-success" type="submit" name="update"value="update"></td>
+                </tr>
+                </table>
+                </form>
+            
+                 {% else %}
+                 
+                 <form method="post">
+                  <table align ="center" class="table table-stripped">
+                     <h2 align="center" style="color: rgb(255, 0, 0);">ADD MAINTENANCE</h2>
+                     <tr>
+                     <th>company_name </th>
+                     <td><input type="text"name="company_name"></td>
+                     </tr>
+                     <tr>
+                     <th>phone_number </th>
+                     <td><input type="number"name="phone_number"></td>
+                     </tr>
+                     <tr>
+                     <th>email </th>
+                     <td><input type="email"name="email"></td>
+                     </tr>
+                     <th>User_name</th>
+                     <td><input type="text" name="user_name"></td>
+                     </tr>
+                     <tr>
+                     <th>password</th>
+                     <td><input type="password" name="password"></td>
+                     </tr>
+                     <tr>
+                     <td align="center" colspan="2"><input class="btn btn-success" type="submit" name="submit"value="submit"></td>
+                     </tr>
+                     </table>
+                     </form>
+                     {%endif%}
+            
+         <center>
+</div>
+	                  </div>
+	               </div>
+	               <div class="col-md-5 bah">
+	                  <div class="bann_img">
+	                     <!-- <figure><img src="/static/images/bann_img.png" alt="#"/></figure> -->
+	                  </div>
+	               </div>
+	            </div>
+	         </div>
+	      </section>
+	      <!-- end banner -->
+
+
+
+          <h1 align="center" style="color: blue;" >MANAGE MAINTENANCE</h1>
+    <table align ="center" class="table table-stripped">
+        <tr>
+            <th style="color: black;">SLNO</th>
+            <th style="color: black;">COMPANY NAME</th>
+            <th style="color: black;">PHONE NUMBER</th>
+            <th style="color: black;">EMAIL</th>
+
+        </tr>
+        {% for i in data['maintenance'] %}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{i['company_name']}}</td>
+            <td>{{i['phone_number']}}</td>
+            <td>{{i['email']}}</td>
+
+
+            <td><a href="?action=delete&did={{i['maintenance_id']}}"class="btn btn-primary">Delete</a></td>
+            <td><a href="?action=update&did={{i['maintenance_id']}}"class="btn btn-primary">Update</a></td>
+
+        </tr>
+        {%endfor%}
+    </table>
+    </form>
+
+       {%include 'footer.html'%}
+       <style>
+        body {
+  background-color:white;
+}
+
+form {
+  display:block;
+  width:650px;
+  height:auto;
+  margin:70px auto;
+  border-radius:15px;
+  background-color:white;
+  font-size:16px;
+  font-family: Papyrus, fantasy;
+  color:black
+}
+</style>
+   
+    
+   
+
+
+   
+
+   

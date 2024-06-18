@@ -1,0 +1,117 @@
+{% include 'branch_header.html' %}
+
+<section id="hero">
+    <div class="hero-container" data-aos="fade-up" data-aos-delay="150"></div>
+</section><!-- End Hero -->
+
+{% if data['upd'] %}
+<form method="post">
+    <table align="center" class="table table-stripped">
+        <h2 align="center" style="color: rgb(250, 14, 14); font-family: Papyrus, fantasy;">UPDATE STAFF</h2>
+        <tr>
+            <th>first_name</th>
+            <td><input type="text" name="first_name" value="{{ data['upd'][0]['first_name'] }}"></td>
+        </tr>
+        <tr>
+            <th>last_name</th>
+            <td><input type="text" name="last_name" value="{{ data['upd'][0]['last_name'] }}"></td>
+        </tr>
+        <tr>
+            <th>dob</th>
+            <td><input type="text" name="dob" value="{{ data['upd'][0]['dob'] }}"></td>
+        </tr>
+        <tr>
+            <th>phone_number</th>
+            <td><input type="number" name="phone_number" value="{{ data['upd'][0]['phone_number'] }}"></td>
+        </tr>
+        <tr>
+            <th>email</th>
+            <td><input type="email" name="email" value="{{ data['upd'][0]['email'] }}"></td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2">
+                <input class="btn btn-success" type="submit" name="update" value="Update">
+            </td>
+        </tr>
+    </table>
+</form>
+{% endif %}
+
+<center>
+    <h1 align="center" style="color: rgb(255, 0, 0); font-family: Papyrus, fantasy;">MANAGE STAFF</h1><br><br><br>
+    <table align="center" class="table table-stripped">
+     <!---   <tr>
+            <th>First Name</th>
+            <td><input type="text" name="first_name" value="first_name"></td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td><input type="text" name="last_name" value="last_name"></td>
+        </tr>
+        <tr>
+            <th>Date of Birth</th>
+            <td><input type="text" name="dob" value="dob"></td>
+        </tr>
+        <tr>
+            <th>Phone Number</th>
+            <td><input type="number" name="phone_number" value="phone_number"></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td><input type="email" name="email" value="email"></td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2">
+                <input class="btn btn-success" type="submit" name="create" value="Create">
+            </td>
+        </tr><br><br><br>-->
+       
+       
+       
+       
+       
+        <tr>
+            <th style="color: black;">SLNO</th>
+            <th style="color: black;">FIRSTNAME</th>
+            <th style="color: black;">LASTNAME</th>
+            <th style="color: black;">DATE OF BIRTH</th>
+            <th style="color: black;">PHONE NUMBER</th>
+            <th style="color: black;">EMAIL</th>
+            <th style="color: black;">ACTIONS</th>
+        </tr>
+        {% for i in data['staff'] %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ i['first_name'] }}</td>
+            <td>{{ i['last_name'] }}</td>
+            <td>{{ i['dob'] }}</td>
+            <td>{{ i['phone_number'] }}</td>
+            <td>{{ i['email'] }}</td>
+            <td>
+                <a href="?action=delete&did={{ i['staff_id'] }}" class="btn btn-danger">Delete</a>
+                <a href="?action=update&did={{ i['staff_id'] }}" class="btn btn-primary">Update</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    </form>
+</center>
+
+{% include 'footer.html' %}
+<style>
+    body {
+        background-color: white;
+    }
+
+    form {
+        display: block;
+        width: 650px;
+        height: auto;
+        margin: 70px auto;
+        border-radius: 15px;
+        background-color: white;
+        font-size: 16px;
+        font-family: Papyrus, fantasy;
+        color: black;
+    }
+</style>

@@ -1,0 +1,74 @@
+{%include 'branch_header.html'%}
+<section id="hero">
+    <div class="hero-container" data-aos="fade-up" data-aos-delay="150">
+
+</div>
+</section><!-- End Hero -->
+<center>
+    <form method="post">
+        <h1 align="center" style="color: rgb(255, 0, 21);font-family: Papyrus, fantasy;">VIEW COMPLAINTS</h1><hr style="color: rgb(17, 118, 82);">
+       <table align ="center"class="table table-stripped">
+        <tr>
+            <th style="color: black;">SLNO </th>
+            <th style="color: black;">COMPLAINT_DETAILS</th>
+            <th style="color: black;">REPLY</th>
+            <th style="color: black;">COMPLAINT_DATE</th>
+            <th style="color: black;">REPLY STATUS</th>
+
+        </tr>
+        {% for i in data['staffsendcomplaint'] %}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{i['complaint_details']}}</td>
+            <td>{{i['reply']}}</td>
+            <td>{{i['date']}}</td>
+
+
+            {% if i['reply']=='pending' %}
+            <td><p><a href="branchsendreplay?cid={{i['complaint_id']}}"><input class="btn btn-success" type="submit" name="submit"value="branch send reply"></a></p></td> 
+           {% endif %}
+        </tr>
+        {%endfor%}
+        </table>
+    </form>
+</center>
+
+       {%include 'footer.html'%}
+       <style>
+        body {
+  background-color:white;
+}
+
+form {
+  display:block;
+  width:550px;
+  height:auto;
+  margin:60px auto;
+  border-radius:15px;
+  background-color:white;
+  font-size:16px;
+  font-family:'Arial';
+  color:black
+}
+</style>
+<style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #D6EEEE;
+    }
+    </style>    
+
+
+   
+   
+
+

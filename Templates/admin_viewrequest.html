@@ -1,0 +1,64 @@
+{% include 'adminheader.html' %}
+
+
+   <!-- banner -->
+	      <section class="banner_main" style="height: 200px">
+	         <div class="container-fluid">
+	            <div class="row d_flex">
+	               <div class="col-md-7">
+	                  <div class="text-bg">
+	                     <div class="padding_lert">
+
+
+
+	                     </div>
+	                  </div>
+	               </div>
+	               <div class="col-md-5 bah">
+	                  <div class="bann_img">
+	                    
+	                  </div>
+	               </div>
+	            </div>
+	         </div>
+	      </section>
+	      <!-- end banner -->
+
+	      <center>
+<h1>view Request</h1>
+<br>
+
+<br>
+<table class="table" style="width: 500px">
+	<tr>
+		<th>Request</th>
+		<th>Video</th>
+		<th>out</th>
+		<th>status</th>
+
+	</tr>
+	{% for row in data['requestss'] %}
+		<tr>
+			<td>{{ row['request'] }}</td>
+
+			<td><video width="320" height="240" controls>
+  <source src="{{ row['video_audio'] }}" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+
+</video></td>
+			<td>{{ row['out']}}</td>
+			<td>{{ row['status']}}</td>
+			<td><a class="btn btn-success" href="admin_viewlocation?lid={{row['request_id']}}">View Location</a></td>
+
+		
+		</tr>
+	{% endfor %}
+	
+
+
+
+</table>
+
+</center>
+
+{% include 'footer.html' %}

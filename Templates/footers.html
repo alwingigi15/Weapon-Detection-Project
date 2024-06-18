@@ -1,0 +1,17 @@
+      <!-- Javascript files-->
+      <script src="/static/js/jquery.min.js"></script>
+      <script src="/static/js/bootstrap.bundle.min.js"></script>
+      <script src="/static/js/jquery-3.0.0.min.js"></script>
+      <script src="/static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="/static/js/custom.js"></script>
+   </body>
+</html>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+
+    {% for message in messages %}
+    <script>alert("{{ message }}")</script>
+    {% endfor %}
+
+    {% endif %}
+{% endwith %}

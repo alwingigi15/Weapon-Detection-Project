@@ -1,0 +1,66 @@
+{% include 'adminheader.html' %}
+<!-- banner -->
+<section class="banner_main">
+  <div class="container-fluid">
+     <div class="row d_flex">
+        <div class="col-md-7">
+           <div class="text-bg">
+              <div class="padding_lert">
+             
+
+
+    <form method="post">
+      <h2 align="center" style="color: rgb(255, 0, 0);">ADD NOTIFICATION</h2>
+        <table align ="center"class="table table-stripped">
+        <tr>
+         <th>TITLE</th>
+        <td><input type="text" name="title"></td>
+         </tr>
+         <tr>
+         <th>NOTIFICATION DETAILS</th>   
+        <td><textarea name="notification_details" id="" cols="30" rows="10" ></textarea></td> 
+         </tr>
+         <tr>
+        <th>DATE</th>
+         <td><input type="date" name="date"></td>
+         </tr>
+         <tr>
+          <td align="center" colspan="2"><input class="btn btn-success" type="submit" name="submit"value="submit"></td>
+        </tr>
+
+         
+         </table>
+</form>
+</div>
+	                  </div>
+	               </div>
+	               <div class="col-md-5 bah">
+	                  <div class="bann_img">
+	                     <!-- <figure><img src="/static/images/bann_img.png" alt="#"/></figure> -->
+	                  </div>
+	               </div>
+	            </div>
+	         </div>
+	      </section>
+	      <!-- end banner -->
+
+       {%include 'footer.html'%}
+       <style>
+        body {
+  background-color:white;
+}
+
+form {
+  display:block;
+  width:650px;
+  height:auto;
+  margin:70px auto;
+  border-radius:15px;
+  background-color:white;
+  font-size:16px;
+  font-family: Papyrus, fantasy;
+  color:black
+}
+</style>
+   
+       
